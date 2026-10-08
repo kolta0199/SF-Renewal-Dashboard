@@ -573,18 +573,18 @@ const Page3 = () => {
    PAGE 4 — CAPABILITY MAP (reference)
    ===================================================================== */
 const CAPABILITY_MAP = [
-  { p: 'Quip for Customer 360', d: 'Collaborative document and spreadsheet tool integrated with Salesforce, used for account planning, customer information, and team collaboration.' },
-  { p: 'Customer Community – Enterprise Edition – Members', d: 'Provides external customers access to the Help Center to create, view, and manage support cases.' },
-  { p: 'Service Cloud – Enterprise Edition', d: 'Provides support agents access to case management, customer service workflows, escalations, and the Service Console.' },
-  { p: 'Customer Community – Enterprise Edition – Logins', d: 'Allows external customers to access the Help Center using a monthly pool of logins rather than individual member licenses.' },
-  { p: 'Event Monitoring', d: 'Tracks Salesforce user activity, logins, API usage, and data access for security monitoring, auditing, and compliance.' },
-  { p: 'Digital Engagement – Enterprise Edition – LP1', d: 'Enables customer support through digital channels for our Premium customers such as messaging and chat, allowing agents to manage conversations within Salesforce.' },
-  { p: 'Lightning Platform Starter – Enterprise Edition', d: 'Provides limited Salesforce platform access for users who need custom applications and objects without full Sales or Service Cloud functionality.' },
-  { p: 'Knowledge', d: 'Enables teams to create, maintain, and publish knowledge articles for support agents and customers through the Help Center.' },
-  { p: 'Sales & Service Cloud – Enterprise Edition (Service)', d: 'Provides full Sales and Service Cloud capabilities, allowing users to manage accounts, opportunities, customer relationships, and support cases.' },
-  { p: 'Sandbox (Full Copy)', d: 'Provides a complete replica of the Salesforce production environment, including data, for development, integration testing, UAT, and release validation.' },
-  { p: 'Salesforce Inbox – Enterprise Edition', d: 'Integrates Salesforce with Outlook to help users manage customer emails, log activities, and work with Salesforce records.' },
-  { p: 'Field Audit Trail – LP1', d: 'Provides extended field history retention to track changes to Salesforce records for auditing, compliance, and historical analysis.' }
+  { q: 71, u: '', p: 'Quip for Customer 360', d: 'Collaborative document and spreadsheet tool integrated with Salesforce, used for account planning, customer information, and team collaboration.' },
+  { q: 620, u: 'members', p: 'Customer Community – Enterprise Edition – Members', d: 'Provides external customers access to the Help Center to create, view, and manage support cases.' },
+  { q: 215, u: '', p: 'Service Cloud – Enterprise Edition', d: 'Provides support agents access to case management, customer service workflows, escalations, and the Service Console.' },
+  { q: 100, u: 'monthly', p: 'Customer Community – Enterprise Edition – Logins', d: 'Allows external customers to access the Help Center using a monthly pool of logins rather than individual member licenses.' },
+  { q: 1, u: '', p: 'Event Monitoring', d: 'Tracks Salesforce user activity, logins, API usage, and data access for security monitoring, auditing, and compliance.' },
+  { q: 50, u: '', p: 'Digital Engagement – Enterprise Edition – LP1', d: 'Enables customer support through digital channels for our Premium customers such as messaging and chat, allowing agents to manage conversations within Salesforce.' },
+  { q: 125, u: '', p: 'Lightning Platform Starter – Enterprise Edition', d: 'Provides limited Salesforce platform access for users who need custom applications and objects without full Sales or Service Cloud functionality.' },
+  { q: 3, u: '', p: 'Knowledge', d: 'Enables teams to create, maintain, and publish knowledge articles for support agents and customers through the Help Center.' },
+  { q: 155, u: '', p: 'Sales & Service Cloud – Enterprise Edition (Service)', d: 'Provides full Sales and Service Cloud capabilities, allowing users to manage accounts, opportunities, customer relationships, and support cases.' },
+  { q: 1, u: '', p: 'Sandbox (Full Copy)', d: 'Provides a complete replica of the Salesforce production environment, including data, for development, integration testing, UAT, and release validation.' },
+  { q: 100, u: '', p: 'Salesforce Inbox – Enterprise Edition', d: 'Integrates Salesforce with Outlook to help users manage customer emails, log activities, and work with Salesforce records.' },
+  { q: 1, u: '', p: 'Field Audit Trail – LP1', d: 'Provides extended field history retention to track changes to Salesforce records for auditing, compliance, and historical analysis.' }
 ];
 
 const Page4 = () => {
@@ -593,7 +593,12 @@ const Page4 = () => {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', flex: 1, paddingRight: '4px' }}>
         {CAPABILITY_MAP.map((item, i) => (
           <div key={i} style={{ padding: '16px 20px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid var(--rule)', display: 'flex', flexDirection: 'column' }}>
-            <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--blue)', marginBottom: '8px', lineHeight: 1.3 }}>{item.p}</div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+              <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--blue)', lineHeight: 1.3, paddingRight: '12px' }}>{item.p}</div>
+              <div className="num" style={{ fontSize: '20px', fontWeight: 800, color: 'var(--ink)', whiteSpace: 'nowrap' }}>
+                {item.q}<span style={{ fontSize: '11px', color: 'var(--muted)', fontWeight: 700, marginLeft: '4px' }}>{item.u}</span>
+              </div>
+            </div>
             <div style={{ fontSize: '13px', color: 'var(--ink2)', lineHeight: 1.55 }}>{item.d}</div>
           </div>
         ))}
