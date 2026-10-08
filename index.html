@@ -572,46 +572,29 @@ const Page3 = () => {
 /* =====================================================================
    PAGE 4 — CAPABILITY MAP (reference)
    ===================================================================== */
-const AREAS = [
-  { title: 'Sales & Revenue', products: [['Sales & Service Cloud', 155, '']],
-    uses: ['CRM', 'Opportunity management', 'Account management', 'Contracts', 'Customer-facing commercial activities'] },
-  { title: 'Customer & Application Support', products: [['Service Cloud', 215, '']], sub: '100 Customer Support · 115 Application Services',
-    uses: ['Case management', 'Support workflows', 'Issue resolution', 'Customer support operations'] },
-  { title: 'Customer Engagement', products: [['Digital Engagement', 50, ''], ['Customer Community', 620, 'members'], ['Community logins', 100, 'monthly']],
-    badge: 'Optimized: Digital Engagement 100 → 50',
-    uses: ['Digital customer interactions', 'Customer self-service', 'External customer engagement'] },
-  { title: 'Productivity', products: [['Quip', 71, ''], ['Salesforce Inbox', 100, '']],
-    uses: ['Collaboration', 'Shared work', 'Email / Salesforce workflow integration'] },
-  { title: 'Platform', products: [['Lightning Platform Starter', 125, ''], ['Knowledge', 3, '']],
-    uses: ['Salesforce-based applications', 'Platform workflows', 'Structured knowledge'] },
-  { title: 'Security · Governance · Testing', products: [['Full Copy Sandbox', 1, ''], ['Event Monitoring', 1, ''], ['Field Audit Trail', 1, '']],
-    uses: ['Testing & development', 'Release validation', 'Security monitoring', 'Audit & compliance', 'Historical data retention'] }
+const CAPABILITY_MAP = [
+  { p: 'Quip for Customer 360', d: 'Collaborative document and spreadsheet tool integrated with Salesforce, used for account planning, customer information, and team collaboration.' },
+  { p: 'Customer Community – Enterprise Edition – Members', d: 'Provides external customers access to the Help Center to create, view, and manage support cases.' },
+  { p: 'Service Cloud – Enterprise Edition', d: 'Provides support agents access to case management, customer service workflows, escalations, and the Service Console.' },
+  { p: 'Customer Community – Enterprise Edition – Logins', d: 'Allows external customers to access the Help Center using a monthly pool of logins rather than individual member licenses.' },
+  { p: 'Event Monitoring', d: 'Tracks Salesforce user activity, logins, API usage, and data access for security monitoring, auditing, and compliance.' },
+  { p: 'Digital Engagement – Enterprise Edition – LP1', d: 'Enables customer support through digital channels for our Premium customers such as messaging and chat, allowing agents to manage conversations within Salesforce.' },
+  { p: 'Lightning Platform Starter – Enterprise Edition', d: 'Provides limited Salesforce platform access for users who need custom applications and objects without full Sales or Service Cloud functionality.' },
+  { p: 'Knowledge', d: 'Enables teams to create, maintain, and publish knowledge articles for support agents and customers through the Help Center.' },
+  { p: 'Sales & Service Cloud – Enterprise Edition (Service)', d: 'Provides full Sales and Service Cloud capabilities, allowing users to manage accounts, opportunities, customer relationships, and support cases.' },
+  { p: 'Sandbox (Full Copy)', d: 'Provides a complete replica of the Salesforce production environment, including data, for development, integration testing, UAT, and release validation.' },
+  { p: 'Salesforce Inbox – Enterprise Edition', d: 'Integrates Salesforce with Outlook to help users manage customer emails, log activities, and work with Salesforce records.' },
+  { p: 'Field Audit Trail – LP1', d: 'Provides extended field history retention to track changes to Salesforce records for auditing, compliance, and historical analysis.' }
 ];
 
 const Page4 = () => {
-  const [hover, setHover] = useState(null);
   return (
-    <div className="fade" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', columnGap: 52, rowGap: 22 }}>
-        {AREAS.map((a, i) => (
-          <div key={a.title} className="row-h" onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}
-            style={{ borderTop: '2px solid ' + (hover === i ? 'var(--blue)' : 'var(--ink)'), paddingTop: 12, opacity: hover === null || hover === i ? 1 : 0.55 }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
-              <span className="num" style={{ fontSize: 13, fontWeight: 800, color: 'var(--blue)', letterSpacing: '.1em' }}>0{i + 1}</span>
-              <span className="serif" style={{ fontSize: 23, fontWeight: 600 }}>{a.title}</span>
-            </div>
-            <div style={{ marginTop: 8 }}>
-              {a.products.map(([n, q, u]) => (
-                <div key={n} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '4px 0', borderBottom: '1px dashed var(--rule)' }}>
-                  <span style={{ fontSize: 15, fontWeight: 600 }}>{n}</span>
-                  <span className="num" style={{ fontSize: 22, fontWeight: 800, color: 'var(--blue)' }}>{q}{u && <span style={{ fontSize: 11.5, color: 'var(--muted)', fontWeight: 700, marginLeft: 6 }}>{u}</span>}</span>
-                </div>
-              ))}
-              {a.sub && <div style={{ fontSize: 13, color: 'var(--ink2)', fontWeight: 700, marginTop: 6 }}>{a.sub}</div>}
-            </div>
-            <div className="caps" style={{ marginTop: 10, fontSize: 10.5 }}>Used for</div>
-            <div style={{ fontSize: 14, color: 'var(--ink2)', lineHeight: 1.5, marginTop: 3 }}>{a.uses.join('  ·  ')}</div>
-            {a.badge && <div style={{ marginTop: 8, display: 'inline-block', fontSize: 11.5, fontWeight: 800, padding: '3px 10px', borderRadius: 999, background: 'var(--greent)', color: 'var(--green)' }}>{a.badge}</div>}
+    <div className="fade" style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: '20px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', flex: 1, paddingRight: '4px' }}>
+        {CAPABILITY_MAP.map((item, i) => (
+          <div key={i} style={{ padding: '16px 20px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid var(--rule)', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--blue)', marginBottom: '8px', lineHeight: 1.3 }}>{item.p}</div>
+            <div style={{ fontSize: '13px', color: 'var(--ink2)', lineHeight: 1.55 }}>{item.d}</div>
           </div>
         ))}
       </div>
@@ -626,7 +609,7 @@ const Page4 = () => {
 
 /* =====================================================================
    DETAIL VIEW (drawer) — methodology, notes, validation
-   ===================================================================== */
+   ==================================================================== */
 const ChecksTable = () => (
   <table><tbody>
     {CHECKS.map(c => (
